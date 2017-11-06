@@ -24,5 +24,10 @@ public class EventChecker : MonoBehaviour
     {
         Debug.Log("이벤트 발생");
         npcDirector1.Play();
+        GetComponent<BoxCollider>().isTrigger = false;
+        GetComponent<EventChecker>().enabled = false;
+        if (other.CompareTag("EventObject"))
+        {
+        }
     }
 }
