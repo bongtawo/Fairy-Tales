@@ -19,7 +19,8 @@ public class CutTreeScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("TreeObject") && AxeAni.isPlaying)
+        //if (other.gameObject.CompareTag("TreeObject") && AxeAni.isPlaying)
+        if (other.gameObject.CompareTag("TreeObject"))
         {
             Debug.Log("나무 맞음");
 
