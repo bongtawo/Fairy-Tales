@@ -7,7 +7,7 @@ public class PlayerMoveTest : MonoBehaviour
     private float x, z;
     private float ry;
 
-    public float speed = 1;
+    private float speed = 0.1f;
 
     // Use this for initialization
     private void Start()

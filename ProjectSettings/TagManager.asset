@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EventObject
   - TreeObject
+  - MainLight
   layers:
   - Default
   - TransparentFX
