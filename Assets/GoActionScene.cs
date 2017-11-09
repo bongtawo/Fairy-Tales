@@ -12,13 +12,16 @@ public class GoActionScene : MonoBehaviour
     void Update()
     {
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //mainPlayer.SetActive(false);
-            //mainLight.SetActive(false);
+            mainPlayer.SetActive(false);
+            mainLight.SetActive(false);
+            GameManager.SetObject(mainPlayer, mainLight);
             SceneManager.LoadScene("Action", LoadSceneMode.Additive);
+            gameObject.GetComponent<Collider>().enabled = false;
         }
     }
 }
