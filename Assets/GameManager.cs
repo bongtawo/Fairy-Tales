@@ -5,15 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameObject playerObject;
+    private static GameObject LightObject;
+
     public void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
 
+    public static void ReturnStroyScene(GameObject ob1, GameObject ob2)
+    {
+        ob1.SetActive(true);
+        ob2.SetActive(true);
+        SceneManager.UnloadSceneAsync("Action");
+    }
+
+    public static void SetObject(GameObject ob1, GameObject ob2)
+    {
+        playerObject = ob1;
+        LightObject = ob2;
+    }
+
     public static void ReturnStroyScene()
     {
-        //GameObject.Find("VR Player").SetActive(true);
-        //GameObject.FindGameObjectWithTag("MainLight").SetActive(true);
+        playerObject.SetActive(true);
+        LightObject.SetActive(true);
         SceneManager.UnloadSceneAsync("Action");
     }
 }
