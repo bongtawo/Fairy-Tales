@@ -6,10 +6,14 @@ public class CutTreeScript : MonoBehaviour
 {
     public float axeMinSpeed = 10;
     public SteamVR_TrackedObject trackedObj;
+    public Transform axeEndTransform;
+    public ParticleSystem woodParticle;
 
     private GameObject thornObject;
     private SteamVR_Controller.Device device;
     private float axeSpeed;
+    private Coroutine resetTree;
+    private Coroutine longVib;
 
     private void Start()
     {
@@ -18,7 +22,7 @@ public class CutTreeScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("위치속도 : " + device.velocity.magnitude + ", 각속도 : " + device.angularVelocity.magnitude);
+        //Debug.Log("위치속도 : " + device.velocity.magnitude + ", 각속도 : " + device.angularVelocity.magnitude);
 
         axeSpeed = device.angularVelocity.magnitude;
         //Debug.Log(controllRigid.angularVelocity.magnitude);
@@ -31,9 +35,16 @@ public class CutTreeScript : MonoBehaviour
             Debug.Log("나무 맞음");
             if (axeSpeed > axeMinSpeed)
             {
-                //if (axeRigid.velocity.magnitude > axeSpeed)
+                Debug.Log(device.angularVelocity.magnitude);
 
-                Debug.Log(device.velocity);
+                if (longVib != null)
+                {
+                    StopCoroutine(longVib);
+                }
+
+                var particle = Instantiate(woodParticle, axeEndTransform.position, axeEndTransform.rotation);
+                particle.Play();
+
                 thornObject = other.transform.GetChild(0).gameObject;
                 if (thornObject.activeInHierarchy)
                 {
@@ -42,8 +53,9 @@ public class CutTreeScript : MonoBehaviour
                 else
                 {
                     other.gameObject.SetActive(false);
-                    StartCoroutine(ResetTree(other.gameObject, thornObject));
+                    resetTree = StartCoroutine(ResetTree(other.gameObject, thornObject));
                 }
+                longVib = StartCoroutine(LongVibration(0.5f, 1f));
             }
         }
     }
@@ -60,5 +72,14 @@ public class CutTreeScript : MonoBehaviour
             thorn.SetActive(false);
         }
         go.SetActive(true);
+    }
+
+    private IEnumerator LongVibration(float length, float strength)
+    {
+        for (float i = 0; i < length; i += Time.deltaTime)
+        {
+            device.TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
+            yield return null;
+        }
     }
 }
