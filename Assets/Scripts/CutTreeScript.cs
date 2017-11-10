@@ -1,49 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class CutTreeScript : MonoBehaviour
 {
-    public float axeMinSpeed = 10;
-    public SteamVR_TrackedObject trackedObj;
+    public Animation AxeAni;
+    public XRNode trackingNode;
 
     private GameObject thornObject;
-    private SteamVR_Controller.Device device;
-    private float axeSpeed;
 
     private void Start()
     {
-        device = SteamVR_Controller.Input((int)trackedObj.index);
+        if (XRSettings.enabled == false)
+        {
+            Debug.LogWarning("NO XR EXIST");
+            this.enabled = false;
+        }
     }
 
-    private void FixedUpdate()
+    // Update is called once per frame
+    private void Update()
     {
-        Debug.Log("위치속도 : " + device.velocity.magnitude + ", 각속도 : " + device.angularVelocity.magnitude);
+        if (Input.GetMouseButtonDown(0))
+        {
+            AxeAni.Play();
+        }
 
-        axeSpeed = device.angularVelocity.magnitude;
-        //Debug.Log(controllRigid.angularVelocity.magnitude);
+        transform.localPosition = InputTracking.GetLocalPosition(trackingNode);
+        transform.localRotation = InputTracking.GetLocalRotation(trackingNode);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //if (other.gameObject.CompareTag("TreeObject") && AxeAni.isPlaying)
         if (other.gameObject.CompareTag("TreeObject"))
         {
             Debug.Log("나무 맞음");
-            if (axeSpeed > axeMinSpeed)
-            {
-                //if (axeRigid.velocity.magnitude > axeSpeed)
 
-                Debug.Log(device.velocity);
-                thornObject = other.transform.GetChild(0).gameObject;
-                if (thornObject.activeInHierarchy)
-                {
-                    thornObject.SetActive(false);
-                }
-                else
-                {
-                    other.gameObject.SetActive(false);
-                    StartCoroutine(ResetTree(other.gameObject, thornObject));
-                }
+            thornObject = other.transform.GetChild(0).gameObject;
+            if (thornObject.activeInHierarchy)
+            {
+                thornObject.SetActive(false);
+            }
+            else
+            {
+                other.gameObject.SetActive(false);
+                StartCoroutine(ResetTree(other.gameObject, thornObject));
             }
         }
     }
