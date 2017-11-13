@@ -9,7 +9,7 @@ public class GoActionScene : MonoBehaviour
     public GameObject mainLight;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
     }
 
@@ -17,10 +17,7 @@ public class GoActionScene : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            mainPlayer.SetActive(false);
-            mainLight.SetActive(false);
-            GameManager.SetObject(mainPlayer, mainLight);
-            SceneManager.LoadScene("Action", LoadSceneMode.Additive);
+            GameManager.LoadActionScene(mainPlayer, mainLight);
             gameObject.GetComponent<Collider>().enabled = false;
         }
     }
