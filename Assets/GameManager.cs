@@ -13,17 +13,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public static void ReturnStroyScene(GameObject ob1, GameObject ob2)
-    {
-        ob1.SetActive(true);
-        ob2.SetActive(true);
-        SceneManager.UnloadSceneAsync("Action");
-    }
-
-    public static void SetObject(GameObject ob1, GameObject ob2)
+    public static void LoadActionScene(GameObject ob1, GameObject ob2)
     {
         playerObject = ob1;
         LightObject = ob2;
+        playerObject.SetActive(false);
+        LightObject.SetActive(false);
+        SceneManager.LoadScene("Action", LoadSceneMode.Additive);
     }
 
     public static void ReturnStroyScene()
