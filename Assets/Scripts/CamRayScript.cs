@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class CamRayScript : MonoBehaviour
 {
-    Ray ray;
-    RaycastHit hit;
+    private Ray ray;
+    private RaycastHit hit;
+
     // Use this for initialization
-    void Start()
+    private void Start()
     {
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         ray = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(ray, out hit, 50f))
+        if (Physics.Raycast(ray, out hit, 1f))
         {
             if (hit.transform.CompareTag("TreeObject"))
             {
