@@ -8,6 +8,7 @@ public class CutTreeScript : MonoBehaviour
     public SteamVR_TrackedObject trackedObj;
     public Transform axeEndTransform;
     public ParticleSystem woodParticle;
+    public TreePlayManager tpm;
 
     private GameObject thornObject;
     private SteamVR_Controller.Device device;
@@ -50,7 +51,7 @@ public class CutTreeScript : MonoBehaviour
                 {
                     thornObject.SetActive(false);
                 }
-                else
+                else if (CutTree(other))
                 {
                     other.gameObject.SetActive(false);
                     resetTree = StartCoroutine(ResetTree(other.gameObject, thornObject));
@@ -80,6 +81,20 @@ public class CutTreeScript : MonoBehaviour
         {
             device.TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
             yield return null;
+        }
+    }
+
+    private bool CutTree(Collider tree)
+    {
+        bool isCutted = tree.GetComponent<TreeHighLight>().HittedTree(1);
+        if (isCutted)
+        {
+            tpm.SaveWood(1);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

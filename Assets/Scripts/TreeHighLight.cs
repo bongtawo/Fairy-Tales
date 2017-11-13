@@ -5,6 +5,13 @@ using UnityEngine;
 public class TreeHighLight : MonoBehaviour
 {
     [HideInInspector] public bool highLighted;
+    private int treeLife = 0;
+    private int maxTreeLife = 10;
+
+    private void OnEnable()
+    {
+        treeLife = maxTreeLife;
+    }
 
     private void Start()
     {
@@ -12,7 +19,7 @@ public class TreeHighLight : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         var shader1 = Shader.Find("Self-Illumin/Diffuse");
         var shader2 = Shader.Find("Diffuse");
@@ -26,5 +33,18 @@ public class TreeHighLight : MonoBehaviour
     private void LateUpdate()
     {
         highLighted = false;
+    }
+
+    public bool HittedTree(int hitCount)
+    {
+        --treeLife;
+        if (treeLife <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
