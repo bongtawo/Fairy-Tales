@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: 4026d84e1c08a4d169a3c1415e223cde
+timeCreated: 1510615032
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Camera
+    100002: //RootNode
+    100004: Lamp
+    100006: Lamp.001
+    100008: Plane
+    400000: Camera
+    400002: //RootNode
+    400004: Lamp
+    400006: Lamp.001
+    400008: Plane
+    2000000: Camera
+    2300000: Plane
+    3300000: Plane
+    4300000: Plane
+    10800000: Lamp
+    10800002: Lamp.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ear
+    second: {fileID: 2100000, guid: fcab0ae3585db429990a487e2fd98eb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ear  3
+    second: {fileID: 2100000, guid: eab4db361f5fa4e9d9f6a1f143cf0e8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ear 2
+    second: {fileID: 2100000, guid: 5d51236e3141f4e3989f72b6477c0847, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye Area
+    second: {fileID: 2100000, guid: 536065c9ea37843ccaf4eda7658038ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye Area 2
+    second: {fileID: 2100000, guid: e2edb9ce865d94e28a83c022c4192576, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jaw
+    second: {fileID: 2100000, guid: ce673c5fe54ab4f9c8615fdeae02816a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paws
+    second: {fileID: 2100000, guid: cee9ae5d33bb8415d8cc814347e602ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paws 2.001
+    second: {fileID: 2100000, guid: 58dc170351d224d5ab9db5ce66a510f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Seat
+    second: {fileID: 2100000, guid: 93f98322c989b42b4a7225f4443f0578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: e399d437a2c4646bfa9f0fabc6af380c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tail 1
+    second: {fileID: 2100000, guid: 3fa598a241bc24e59936354878b3ce19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tail 2
+    second: {fileID: 2100000, guid: 308e2b022bce44854bfe473fd8b79eba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UnderSkin
+    second: {fileID: 2100000, guid: 1d404557a48bb4bcb9dd3f26eb4a5280, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
