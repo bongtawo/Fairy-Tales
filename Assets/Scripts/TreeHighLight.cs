@@ -5,6 +5,7 @@ using UnityEngine;
 public class TreeHighLight : MonoBehaviour
 {
     [HideInInspector] public bool highLighted;
+    public TreePlayManager tpm;
     private int treeLife = 0;
     private int maxTreeLife = 10;
 
@@ -40,6 +41,7 @@ public class TreeHighLight : MonoBehaviour
         --treeLife;
         if (treeLife <= 0)
         {
+            tpm.SaveWood(1);
             return true;
         }
         else
