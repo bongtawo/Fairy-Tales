@@ -8,7 +8,6 @@ public class CutTreeScript : MonoBehaviour
     public SteamVR_TrackedObject trackedObj;
     public Transform axeEndTransform;
     public ParticleSystem woodParticle;
-    public TreePlayManager tpm;
 
     private GameObject thornObject;
     private SteamVR_Controller.Device device;
@@ -46,22 +45,23 @@ public class CutTreeScript : MonoBehaviour
                 var particle = Instantiate(woodParticle, axeEndTransform.position, axeEndTransform.rotation);
                 particle.Play();
 
-                thornObject = other.transform.GetChild(0).gameObject;
+                /*thornObject = other.transform.GetChild(0).gameObject;
                 if (thornObject.activeInHierarchy)
                 {
                     thornObject.SetActive(false);
                 }
-                else if (CutTree(other))
+                else*/
+                if (CutTree(other))
                 {
                     other.gameObject.SetActive(false);
-                    resetTree = StartCoroutine(ResetTree(other.gameObject, thornObject));
+                    //resetTree = StartCoroutine(ResetTree(other.gameObject, thornObject));
                 }
                 longVib = StartCoroutine(LongVibration(0.5f, 1f));
             }
         }
     }
 
-    private IEnumerator ResetTree(GameObject go, GameObject thorn)
+    /*private IEnumerator ResetTree(GameObject go, GameObject thorn)
     {
         yield return new WaitForSeconds(3);
         if (Random.Range(0, 2) == 1)
@@ -73,7 +73,7 @@ public class CutTreeScript : MonoBehaviour
             thorn.SetActive(false);
         }
         go.SetActive(true);
-    }
+    }*/
 
     private IEnumerator LongVibration(float length, float strength)
     {
@@ -87,14 +87,6 @@ public class CutTreeScript : MonoBehaviour
     private bool CutTree(Collider tree)
     {
         bool isCutted = tree.GetComponent<TreeHighLight>().HittedTree(1);
-        if (isCutted)
-        {
-            tpm.SaveWood(1);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return isCutted;
     }
 }
