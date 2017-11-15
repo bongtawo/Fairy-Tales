@@ -44,7 +44,7 @@ MonoBehaviour:
   lockPhysicsUpdateRateToRenderFrequency: 1
   externalCamera: {fileID: 0}
   externalCameraConfigPath: externalcamera.cfg
-  trackingSpace: 1
+  trackingSpace: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
