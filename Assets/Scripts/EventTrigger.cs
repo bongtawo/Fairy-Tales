@@ -19,13 +19,13 @@ public class EventTrigger : MonoBehaviour
 		director.Stop();
 	}
 
-	private void Awake() 
-	{
-	}
-
 	private void OnTriggerEnter(Collider other) 
 	{
-		
+		EventStart();
+	}
+
+	private void EventStart()
+	{
 		mainCamera.SetActive(false);
 		axeRender.enabled = false;
 		wolf.SetActive(true);
