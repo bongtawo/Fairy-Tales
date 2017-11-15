@@ -7,29 +7,23 @@ public class EventTrigger : MonoBehaviour
 {
 	public GameObject wolf;
 	public Renderer axeRender;
-	public GameObject mainCamera;
-	public GameObject vCamera;
 	public PlayableDirector director;
 
 	private void Start() 
 	{
-		mainCamera.SetActive(true);
-		vCamera.SetActive(false);
+		Debug.Log("Start");
 		wolf.SetActive(false);
 		director.Stop();
 	}
 
-	private void Awake() 
-	{
-	}
-
 	private void OnTriggerEnter(Collider other) 
 	{
-		
-		mainCamera.SetActive(false);
+		EventStart();
+	}
+
+	private void EventStart()
+	{
 		axeRender.enabled = false;
-		wolf.SetActive(true);
-		vCamera.SetActive(true);
 		Debug.Log("Play");
 		director.Play();
 	}
