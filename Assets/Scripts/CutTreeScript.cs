@@ -14,6 +14,7 @@ public class CutTreeScript : MonoBehaviour
     private float axeSpeed;
     private Coroutine resetTree;
     private Coroutine longVib;
+    public AudioSource axeSound;
 
     private void Start()
     {
@@ -33,9 +34,11 @@ public class CutTreeScript : MonoBehaviour
         if (other.gameObject.CompareTag("TreeObject"))
         {
             Debug.Log("나무 맞음");
+
             if (axeSpeed > axeMinSpeed)
             {
                 Debug.Log(device.angularVelocity.magnitude);
+                axeSound.Play();
 
                 if (longVib != null)
                 {
