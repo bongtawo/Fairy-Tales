@@ -185,6 +185,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1996383819389606
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4562578464411536}
+  - component: {fileID: 65838756936372420}
+  - component: {fileID: 114612668026197258}
+  m_Layer: 0
+  m_Name: AxeBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4006917741631408
 Transform:
   m_ObjectHideFlags: 1
@@ -233,7 +250,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1181586095711122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -106.33, y: 1, z: -7.11}
+  m_LocalPosition: {x: 0, y: 169.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4991446335614438}
@@ -242,6 +259,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4562578464411536
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996383819389606}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.06, y: -0.36, z: 0}
+  m_LocalScale: {x: 0.02, y: 0.15, z: 0.14}
+  m_Children: []
+  m_Father: {fileID: 4687538746498636}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4687538746498636
 Transform:
   m_ObjectHideFlags: 1
@@ -253,6 +283,7 @@ Transform:
   m_LocalScale: {x: 0.74206907, y: 0.7201368, z: 1}
   m_Children:
   - {fileID: 4920327472602882}
+  - {fileID: 4562578464411536}
   m_Father: {fileID: 4394344463116782}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -185.091, y: 89.675995, z: -89.466}
@@ -290,13 +321,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1034375283022398}
-  m_LocalRotation: {x: 0.4812039, y: 0.5208214, z: -0.5225742, w: 0.47339636}
-  m_LocalPosition: {x: -0.17869335, y: -0.3629331, z: 0.03216356}
+  m_LocalRotation: {x: -0.0049163704, y: 0.73772305, z: 0.010167987, w: 0.675009}
+  m_LocalPosition: {x: -0.183, y: -0.363, z: -0.0001}
   m_LocalScale: {x: 0, y: 0.4343213, z: 0.48642087}
   m_Children: []
   m_Father: {fileID: 4687538746498636}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 181.24, y: -84.91998, z: -179.629}
 --- !u!4 &4949983470747930
 Transform:
   m_ObjectHideFlags: 1
@@ -501,8 +532,20 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.18360493, y: 0.10403432, z: 0.02709784}
-  m_Center: {x: -0.08858167, y: -0.35572842, z: -0.0006228992}
+  m_Size: {x: 0.04642878, y: 0.17038888, z: 0.02709784}
+  m_Center: {x: -0.15717027, y: -0.36448032, z: -0.0006227943}
+--- !u!65 &65838756936372420
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996383819389606}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &81289565160127708
 AudioListener:
   m_ObjectHideFlags: 1
@@ -560,6 +603,18 @@ MonoBehaviour:
   verbose: 0
   createComponents: 1
   updateDynamically: 1
+--- !u!114 &114612668026197258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996383819389606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea987d48bb3d5042abf8e823c7990f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardAxeCol: {fileID: 65426521126891574}
 --- !u!114 &114649902437497690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -593,6 +648,7 @@ MonoBehaviour:
   axeEndTransform: {fileID: 4920327472602882}
   woodParticle: {fileID: 198000011002288308, guid: beb3acff7ab73944fb8f470f24d74ed3,
     type: 2}
+  axeSound: {fileID: 0}
 --- !u!114 &114685819573052332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -711,7 +767,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
+  m_Radius: 0.5
   m_Height: 0.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.2, z: 0}

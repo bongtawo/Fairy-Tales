@@ -16,7 +16,7 @@ public class CamRayScript : MonoBehaviour
     private void Update()
     {
         ray = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(ray, out hit, 1f))
+        if (Physics.Raycast(ray, out hit, 5f))
         {
             if (hit.transform.CompareTag("TreeObject"))
             {

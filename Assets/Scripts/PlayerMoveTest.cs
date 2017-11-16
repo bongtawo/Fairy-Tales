@@ -8,7 +8,7 @@ public class PlayerMoveTest : MonoBehaviour
     private Camera cam;
     private float inputX, inputZ;
     private Vector3 setPosition;
-    private float speed = 0.6f;
+    private float speed = 0.3f;
 
     private void Start()
     {
