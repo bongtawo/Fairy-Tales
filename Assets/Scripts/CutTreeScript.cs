@@ -25,7 +25,7 @@ public class CutTreeScript : MonoBehaviour
     {
         //Debug.Log("위치속도 : " + device.velocity.magnitude + ", 각속도 : " + device.angularVelocity.magnitude);
 
-        axeSpeed = device.angularVelocity.magnitude;
+        axeSpeed = device.angularVelocity.y;
         //Debug.Log(controllRigid.angularVelocity.magnitude);
     }
 
@@ -35,9 +35,9 @@ public class CutTreeScript : MonoBehaviour
         {
             Debug.Log("나무 맞음");
 
-            if (axeSpeed > axeMinSpeed)
+            if (axeSpeed < axeMinSpeed)
             {
-                Debug.Log(device.angularVelocity.magnitude);
+                Debug.Log(device.angularVelocity);
                 axeSound.Play();
 
                 if (longVib != null)
