@@ -15,6 +15,7 @@ public class CutTreeScript : MonoBehaviour
     private Coroutine resetTree;
     private Coroutine longVib;
     public AudioSource axeSound;
+    private bool canHitTree = true;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class CutTreeScript : MonoBehaviour
     {
         //Debug.Log("위치속도 : " + device.velocity.magnitude + ", 각속도 : " + device.angularVelocity.magnitude);
 
-        axeSpeed = device.angularVelocity.y;
+        axeSpeed = device.angularVelocity.magnitude;
         //Debug.Log(controllRigid.angularVelocity.magnitude);
     }
 
@@ -35,9 +36,9 @@ public class CutTreeScript : MonoBehaviour
         {
             Debug.Log("나무 맞음");
 
-            if (axeSpeed < axeMinSpeed)
+            if (axeSpeed > axeMinSpeed && canHitTree)
             {
-                Debug.Log(device.angularVelocity);
+                Debug.Log(axeSpeed);
                 axeSound.Play();
 
                 if (longVib != null)
@@ -60,6 +61,7 @@ public class CutTreeScript : MonoBehaviour
                     //resetTree = StartCoroutine(ResetTree(other.gameObject, thornObject));
                 }
                 longVib = StartCoroutine(LongVibration(0.5f, 1f));
+                StartCoroutine(WaitAxe());
             }
         }
     }
@@ -85,6 +87,13 @@ public class CutTreeScript : MonoBehaviour
             device.TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, strength));
             yield return null;
         }
+    }
+
+    private IEnumerator WaitAxe()
+    {
+        canHitTree = false;
+        yield return new WaitForSeconds(1);
+        canHitTree = true;
     }
 
     private bool CutTree(Collider tree)
