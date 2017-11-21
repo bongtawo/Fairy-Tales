@@ -21,6 +21,10 @@ public class SceneChanger : MonoBehaviour
         {
             switch (SceneManager.GetActiveScene().name)
             {
+                case "Test_scene":
+                    SceneManager.LoadScene("S1_scene");
+                    break;
+
                 case "S0_scene":
                     SceneManager.LoadScene("S1_scene");
                     break;

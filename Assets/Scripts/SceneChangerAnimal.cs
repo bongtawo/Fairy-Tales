@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SceneChangerAnimal : MonoBehaviour
+{
+    private void OnEnable() 
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+               case "Dialogue_Test":
+                    Debug.Log("Change Scene to Action_02");
+                    SceneManager.LoadScene("Action_02",LoadSceneMode.Additive);
+                    break;
+
+               default:
+                    break;
+        }
+    }
+}

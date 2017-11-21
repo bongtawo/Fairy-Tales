@@ -5,25 +5,25 @@ using UnityEngine.Playables;
 
 public class EventTrigger : MonoBehaviour 
 {
-	public GameObject wolf;
+	public GameObject animal;
 	public Renderer axeRender;
 	public PlayableDirector director;
 
 	private void Start() 
 	{
-		Debug.Log("Start");
-		wolf.SetActive(false);
+		animal.SetActive(false);
 		director.Stop();
 	}
 
 	private void OnTriggerEnter(Collider other) 
 	{
+		Debug.Log("OnTriggerEnter");
 		EventStart();
 	}
 
 	private void EventStart()
 	{
-		axeRender.enabled = false;
+		//axeRender.enabled = false;
 		Debug.Log("Play");
 		director.Play();
 	}

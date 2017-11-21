@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: bf19566ac32554285b763050f74096ab
+timeCreated: 1511229343
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: NanumMyeongjoOTF
+  fontNames:
+  - NanumMyeongjoOTF
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b24c4d5a4701845c980e41b25124d9c2, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
