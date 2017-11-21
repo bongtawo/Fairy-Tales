@@ -15,6 +15,7 @@ public class CutTreeScript : MonoBehaviour
     private Coroutine resetTree;
     private Coroutine longVib;
     public AudioSource axeSound;
+    public AudioSource axeSound2;
 
     private void Start()
     {
@@ -39,6 +40,7 @@ public class CutTreeScript : MonoBehaviour
             {
                 Debug.Log(device.angularVelocity);
                 axeSound.Play();
+                axeSound2.Play();
 
                 if (longVib != null)
                 {

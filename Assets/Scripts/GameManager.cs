@@ -19,13 +19,13 @@ public class GameManager : MonoBehaviour
         LightObject = ob2;
         playerObject.SetActive(false);
         LightObject.SetActive(false);
-        SceneManager.LoadScene("Action", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Action_02", LoadSceneMode.Additive);
     }
 
     public static void ReturnStroyScene()
     {
         playerObject.SetActive(true);
         LightObject.SetActive(true);
-        SceneManager.UnloadSceneAsync("Action");
+        SceneManager.UnloadSceneAsync("Action_02");
     }
 }

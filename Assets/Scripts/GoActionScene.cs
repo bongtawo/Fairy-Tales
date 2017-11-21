@@ -13,12 +13,9 @@ public class GoActionScene : MonoBehaviour
     {
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnEnable()
     {
-        if (other.CompareTag("Player"))
-        {
-            GameManager.LoadActionScene(mainPlayer, mainLight);
-            gameObject.GetComponent<Collider>().enabled = false;
-        }
+        GameManager.LoadActionScene(mainPlayer, mainLight);
+        gameObject.GetComponent<Collider>().enabled = false;
     }
 }
