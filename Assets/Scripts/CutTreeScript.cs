@@ -15,6 +15,7 @@ public class CutTreeScript : MonoBehaviour
     private Coroutine resetTree;
     private Coroutine longVib;
     public AudioSource axeSound;
+    public AudioSource huaSound;
     private bool canHitTree = true;
 
     private void Start()
@@ -40,6 +41,7 @@ public class CutTreeScript : MonoBehaviour
             {
                 Debug.Log(axeSpeed);
                 axeSound.Play();
+                huaSound.Play();
 
                 if (longVib != null)
                 {
