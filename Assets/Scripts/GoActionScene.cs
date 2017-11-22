@@ -17,8 +17,8 @@ public class GoActionScene : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.LoadActionScene(mainPlayer, mainLight, mainDirector);
-        gameObject.GetComponent<Collider>().enabled = false;
         mainDirector.Pause();
+        GameManager.LoadActionScene(mainPlayer, mainLight, mainDirector);
+        //gameObject.GetComponent<Collider>().enabled = false;
     }
 }
