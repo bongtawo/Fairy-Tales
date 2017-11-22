@@ -8,6 +8,8 @@ public class EventTrigger : MonoBehaviour
     public GameObject animal;
     public Renderer axeRender;
     public PlayableDirector director;
+    public GameObject player;
+    public Vector3 aniStartPos;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class EventTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("OnTriggerEnter");
+        player.transform.position = aniStartPos;
         EventStart();
     }
 
@@ -28,17 +31,18 @@ public class EventTrigger : MonoBehaviour
         director.Play();
     }
 
-	private void Update() {
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			if(director.state == PlayState.Paused)
-			{
-				director.Play();
-			}
-			else
-			{
-				director.Pause();
-			}
-		}
-	}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (director.state == PlayState.Paused)
+            {
+                director.Play();
+            }
+            else
+            {
+                director.Pause();
+            }
+        }
+    }
 }

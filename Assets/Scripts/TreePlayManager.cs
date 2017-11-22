@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TreePlayManager : MonoBehaviour
 {
-    private int maxNeedWood = 5;
+    private int maxNeedWood = 1;
     private int curWood = 0;
 
     public void SaveWood(int getWood)
