@@ -27,4 +27,18 @@ public class EventTrigger : MonoBehaviour
         Debug.Log("Play");
         director.Play();
     }
+
+	private void Update() {
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			if(director.state == PlayState.Paused)
+			{
+				director.Play();
+			}
+			else
+			{
+				director.Pause();
+			}
+		}
+	}
 }
