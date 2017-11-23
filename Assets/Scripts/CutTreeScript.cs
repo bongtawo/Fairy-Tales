@@ -17,14 +17,35 @@ public class CutTreeScript : MonoBehaviour
     public AudioSource axeSound;
     public AudioSource huaSound;
     private bool canHitTree = true;
+    private float powerRatio = 0f;
+
+    private Color chargeColor = Color.red;
+    private Renderer swordRenderer;
+    private Color currentEmissionColor = Color.black;
+    private Renderer axeRenderer;
 
     private void Start()
     {
+        axeRenderer = GetComponent<Renderer>();
         device = SteamVR_Controller.Input((int)trackedObj.index);
     }
 
     private void FixedUpdate()
     {
+        powerRatio -= Time.deltaTime;
+        if (powerRatio < 0)
+        {
+            powerRatio = 0;
+        }
+
+        if (Input.GetAxis("Fire1") > 0.1f)
+        {
+            Charge();
+        }
+
+        currentEmissionColor = Color.Lerp(Color.black, chargeColor, powerRatio);
+        axeRenderer.material.SetColor("_EmissionColor", currentEmissionColor);
+
         //Debug.Log("위치속도 : " + device.velocity.magnitude + ", 각속도 : " + device.angularVelocity.magnitude);
 
         axeSpeed = device.angularVelocity.magnitude;
@@ -100,7 +121,24 @@ public class CutTreeScript : MonoBehaviour
 
     private bool CutTree(Collider tree)
     {
-        bool isCutted = tree.GetComponent<TreeHighLight>().HittedTree(1);
+        bool isCutted;
+        Debug.Log(powerRatio);
+        if (powerRatio == 1)
+        {
+            isCutted = tree.GetComponent<TreeHighLight>().HittedTree(10);
+            powerRatio = 0;
+        }
+        else
+        {
+            isCutted = tree.GetComponent<TreeHighLight>().HittedTree(1);
+        }
         return isCutted;
+    }
+
+    private void Charge()
+    {
+        powerRatio += Time.deltaTime * 2;
+
+        powerRatio = Mathf.Clamp01(powerRatio);
     }
 }
