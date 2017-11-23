@@ -78,11 +78,7 @@ public class CutTreeScript : MonoBehaviour
                     thornObject.SetActive(false);
                 }
                 else*/
-                if (CutTree(other))
-                {
-                    other.gameObject.SetActive(false);
-                    //resetTree = StartCoroutine(ResetTree(other.gameObject, thornObject));
-                }
+                CutTree(other);
                 longVib = StartCoroutine(LongVibration(0.5f, 1f));
                 StartCoroutine(WaitAxe());
             }
@@ -119,20 +115,18 @@ public class CutTreeScript : MonoBehaviour
         canHitTree = true;
     }
 
-    private bool CutTree(Collider tree)
+    private void CutTree(Collider tree)
     {
-        bool isCutted;
         Debug.Log(powerRatio);
         if (powerRatio == 1)
         {
-            isCutted = tree.GetComponent<TreeHighLight>().HittedTree(10);
+            tree.GetComponent<TreeHighLight>().HittedTree(10);
             powerRatio = 0;
         }
         else
         {
-            isCutted = tree.GetComponent<TreeHighLight>().HittedTree(1);
+            tree.GetComponent<TreeHighLight>().HittedTree(1);
         }
-        return isCutted;
     }
 
     private void Charge()
