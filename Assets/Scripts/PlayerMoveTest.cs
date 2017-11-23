@@ -12,6 +12,10 @@ public class PlayerMoveTest : MonoBehaviour
 
     private void Start()
     {
+        //set start color
+        SteamVR_Fade.Start(Color.white, 0f);
+        //set and start fade to
+        SteamVR_Fade.Start(Color.clear, 2f);
         cam = Camera.main;
     }
 
@@ -25,5 +29,9 @@ public class PlayerMoveTest : MonoBehaviour
         setPosition += cam.transform.right * inputX * speed;
         setPosition.y = 0;
         transform.position += setPosition;
+    }
+
+    private void OnEnable()
+    {
     }
 }

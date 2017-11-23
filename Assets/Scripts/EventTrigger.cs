@@ -22,6 +22,7 @@ public class EventTrigger : MonoBehaviour
         Debug.Log("OnTriggerEnter");
         player.transform.position = aniStartPos;
         EventStart();
+        gameObject.SetActive(false);
     }
 
     private void EventStart()

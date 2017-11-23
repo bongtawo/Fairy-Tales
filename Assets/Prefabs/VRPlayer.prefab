@@ -37,7 +37,8 @@ GameObject:
   - component: {fileID: 20813374520698936}
   - component: {fileID: 124602866948914030}
   - component: {fileID: 114308602838488782}
-  - component: {fileID: 114685819573052332}
+  - component: {fileID: 114230550282867746}
+  - component: {fileID: 114091077445666856}
   m_Layer: 0
   m_Name: Camera (eye)
   m_TagString: MainCamera
@@ -76,6 +77,7 @@ GameObject:
   - component: {fileID: 54130347151023214}
   - component: {fileID: 136814375730548938}
   - component: {fileID: 114900856357561860}
+  - component: {fileID: 95339336972621040}
   m_Layer: 0
   m_Name: VRPlayer
   m_TagString: Player
@@ -232,8 +234,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1181586095711122}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -10.7}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 52.8, y: 7, z: -0.5000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4991446335614438}
@@ -517,6 +519,34 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1731626803876616}
   m_Enabled: 1
+--- !u!95 &95339336972621040
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181586095711122}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114091077445666856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061899595791858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad1e469d4e3e04489f9a36419f1a4f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114114768497992204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,6 +562,20 @@ MonoBehaviour:
   right: {fileID: 1601888783651048}
   objects: []
   assignAllBeforeIdentified: 0
+--- !u!114 &114230550282867746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061899595791858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 4798603264993150}
+  _ears: {fileID: 4265921471455396}
+  wireframe: 0
 --- !u!114 &114308602838488782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -594,20 +638,7 @@ MonoBehaviour:
   woodParticle: {fileID: 198000011002288308, guid: beb3acff7ab73944fb8f470f24d74ed3,
     type: 2}
   axeSound: {fileID: 0}
---- !u!114 &114685819573052332
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1061899595791858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _head: {fileID: 4798603264993150}
-  _ears: {fileID: 4265921471455396}
-  wireframe: 0
+  huaSound: {fileID: 0}
 --- !u!114 &114752788189080156
 MonoBehaviour:
   m_ObjectHideFlags: 1
