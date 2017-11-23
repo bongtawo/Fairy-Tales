@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutTreeScript : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CutTreeScript : MonoBehaviour
     public SteamVR_TrackedObject trackedObj;
     public Transform axeEndTransform;
     public ParticleSystem woodParticle;
+    public Slider powerSlider;
 
     private GameObject thornObject;
     private SteamVR_Controller.Device device;
@@ -17,7 +19,6 @@ public class CutTreeScript : MonoBehaviour
     public AudioSource axeSound;
     public AudioSource huaSound;
     private bool canHitTree = true;
-    private float powerRatio = 0f;
 
     private Color chargeColor = Color.red;
     private Renderer swordRenderer;
@@ -32,10 +33,10 @@ public class CutTreeScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        powerRatio -= Time.deltaTime;
-        if (powerRatio < 0)
+        powerSlider.value -= Time.deltaTime;
+        if (powerSlider.value < 0)
         {
-            powerRatio = 0;
+            powerSlider.value = 0;
         }
 
         if (Input.GetAxis("Fire1") > 0.1f)
@@ -43,7 +44,7 @@ public class CutTreeScript : MonoBehaviour
             Charge();
         }
 
-        currentEmissionColor = Color.Lerp(Color.black, chargeColor, powerRatio);
+        currentEmissionColor = Color.Lerp(Color.black, chargeColor, powerSlider.value);
         axeRenderer.material.SetColor("_EmissionColor", currentEmissionColor);
 
         //Debug.Log("위치속도 : " + device.velocity.magnitude + ", 각속도 : " + device.angularVelocity.magnitude);
@@ -117,11 +118,10 @@ public class CutTreeScript : MonoBehaviour
 
     private void CutTree(Collider tree)
     {
-        Debug.Log(powerRatio);
-        if (powerRatio == 1)
+        if (powerSlider.value == 1)
         {
             tree.GetComponent<TreeHighLight>().HittedTree(10);
-            powerRatio = 0;
+            powerSlider.value = 0;
         }
         else
         {
@@ -131,8 +131,8 @@ public class CutTreeScript : MonoBehaviour
 
     private void Charge()
     {
-        powerRatio += Time.deltaTime * 2;
+        powerSlider.value += Time.deltaTime * 2;
 
-        powerRatio = Mathf.Clamp01(powerRatio);
+        powerSlider.value = Mathf.Clamp01(powerSlider.value);
     }
 }
