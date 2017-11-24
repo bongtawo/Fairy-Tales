@@ -32,4 +32,9 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync("Action_02");
         directorObject.Play();
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

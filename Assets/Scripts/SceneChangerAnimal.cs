@@ -5,17 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangerAnimal : MonoBehaviour
 {
-    private void OnEnable() 
+    private void OnEnable()
     {
         switch (SceneManager.GetActiveScene().name)
         {
-               case "Dialogue_Test":
-                    Debug.Log("Change Scene to Action_02");
-                    SceneManager.LoadScene("Action_02",LoadSceneMode.Additive);
-                    break;
+            case "Dialogue_Test":
+                Debug.Log("Change Scene to Action_02");
+                SceneManager.LoadScene("Action_02", LoadSceneMode.Additive);
+                break;
 
-               default:
-                    break;
+            case "MainMenu":
+                SceneManager.LoadScene("Intro_scene");
+                break;
+
+            default:
+                break;
         }
     }
 }
