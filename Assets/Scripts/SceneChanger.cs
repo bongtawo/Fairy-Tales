@@ -21,7 +21,7 @@ public class SceneChanger : MonoBehaviour
         {
             switch (SceneManager.GetActiveScene().name)
             {
-                case "Intro_scene":
+                case "Intro_Scene":
                     SceneManager.LoadScene("Fox_scene");
                     break;
 
