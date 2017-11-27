@@ -11,6 +11,7 @@ public class EventTrigger : MonoBehaviour
     public GameObject player;
     public Transform aniStartPos;
     public PlayerMoveTest VRController;
+    public AudioSource EventBgm;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class EventTrigger : MonoBehaviour
         EventStart();
         gameObject.SetActive(false);
         VRController.enabled = false;
+        EventBgm.Play();
     }
 
     private void EventStart()
