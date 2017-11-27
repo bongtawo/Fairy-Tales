@@ -58,7 +58,7 @@ public class SceneChanger : MonoBehaviour
                     break;
 
                 case "Animal_Scene":
-                    SceneManager.LoadScene("MountainGod_Scene");
+                    SceneManager.LoadScene("MountainGod_scene");
                     break;
 
                 default:
