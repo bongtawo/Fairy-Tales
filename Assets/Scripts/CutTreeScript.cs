@@ -112,7 +112,7 @@ public class CutTreeScript : MonoBehaviour
     private IEnumerator WaitAxe()
     {
         canHitTree = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         canHitTree = true;
     }
 
