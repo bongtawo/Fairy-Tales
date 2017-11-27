@@ -29,6 +29,11 @@ public class PlayerMoveTest : MonoBehaviour
         setPosition += cam.transform.right * inputX * speed;
         setPosition.y = 0;
         transform.position += setPosition;
+
+        if (Input.GetButton("Cancel"))
+        {
+            Debug.Log("메뉴키");
+        }
     }
 
     private void OnEnable()
