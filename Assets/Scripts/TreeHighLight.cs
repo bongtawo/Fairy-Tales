@@ -38,9 +38,11 @@ public class TreeHighLight : MonoBehaviour
 
     public bool HittedTree(int hitCount)
     {
-        --treeLife;
+        Debug.Log(hitCount);
+        treeLife -= hitCount;
         if (treeLife <= 0)
         {
+            gameObject.SetActive(false);
             tpm.SaveWood(1);
             return true;
         }

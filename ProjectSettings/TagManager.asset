@@ -7,6 +7,7 @@ TagManager:
   - EventObject
   - TreeObject
   - MainLight
+  - UI_Button
   layers:
   - Default
   - TransparentFX

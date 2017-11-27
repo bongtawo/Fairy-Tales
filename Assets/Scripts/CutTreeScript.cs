@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutTreeScript : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CutTreeScript : MonoBehaviour
     public SteamVR_TrackedObject trackedObj;
     public Transform axeEndTransform;
     public ParticleSystem woodParticle;
+    public Slider powerSlider;
 
     private GameObject thornObject;
     private SteamVR_Controller.Device device;
@@ -18,13 +20,33 @@ public class CutTreeScript : MonoBehaviour
     public AudioSource huaSound;
     private bool canHitTree = true;
 
+    private Color chargeColor = Color.red;
+    private Renderer swordRenderer;
+    private Color currentEmissionColor = Color.black;
+    private Renderer axeRenderer;
+
     private void Start()
     {
+        axeRenderer = GetComponent<Renderer>();
         device = SteamVR_Controller.Input((int)trackedObj.index);
     }
 
     private void FixedUpdate()
     {
+        powerSlider.value -= Time.deltaTime;
+        if (powerSlider.value < 0)
+        {
+            powerSlider.value = 0;
+        }
+
+        if (Input.GetAxis("Fire1") > 0.1f)
+        {
+            Charge();
+        }
+
+        currentEmissionColor = Color.Lerp(Color.black, chargeColor, powerSlider.value);
+        axeRenderer.material.SetColor("_EmissionColor", currentEmissionColor);
+
         //Debug.Log("위치속도 : " + device.velocity.magnitude + ", 각속도 : " + device.angularVelocity.magnitude);
 
         axeSpeed = device.angularVelocity.magnitude;
@@ -57,11 +79,7 @@ public class CutTreeScript : MonoBehaviour
                     thornObject.SetActive(false);
                 }
                 else*/
-                if (CutTree(other))
-                {
-                    other.gameObject.SetActive(false);
-                    //resetTree = StartCoroutine(ResetTree(other.gameObject, thornObject));
-                }
+                CutTree(other);
                 longVib = StartCoroutine(LongVibration(0.5f, 1f));
                 StartCoroutine(WaitAxe());
             }
@@ -94,13 +112,27 @@ public class CutTreeScript : MonoBehaviour
     private IEnumerator WaitAxe()
     {
         canHitTree = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         canHitTree = true;
     }
 
-    private bool CutTree(Collider tree)
+    private void CutTree(Collider tree)
     {
-        bool isCutted = tree.GetComponent<TreeHighLight>().HittedTree(1);
-        return isCutted;
+        if (powerSlider.value == 1)
+        {
+            tree.GetComponent<TreeHighLight>().HittedTree(10);
+            powerSlider.value = 0;
+        }
+        else
+        {
+            tree.GetComponent<TreeHighLight>().HittedTree(1);
+        }
+    }
+
+    private void Charge()
+    {
+        powerSlider.value += Time.deltaTime * 2;
+
+        powerSlider.value = Mathf.Clamp01(powerSlider.value);
     }
 }
