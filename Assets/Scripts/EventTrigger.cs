@@ -12,6 +12,7 @@ public class EventTrigger : MonoBehaviour
     public Transform aniStartPos;
     public PlayerMoveTest VRController;
     public AudioSource EventBgm;
+    public AudioSource BirdFx;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class EventTrigger : MonoBehaviour
         gameObject.SetActive(false);
         VRController.enabled = false;
         EventBgm.Play();
+        BirdFx.Stop();
     }
 
     private void EventStart()
