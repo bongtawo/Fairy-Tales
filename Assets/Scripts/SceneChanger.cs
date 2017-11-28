@@ -21,8 +21,8 @@ public class SceneChanger : MonoBehaviour
         {
             switch (SceneManager.GetActiveScene().name)
             {
-                case "Intro_Scene":
-                    SceneManager.LoadScene("Animal_Scene");
+                case "Intro_scene":
+                    SceneManager.LoadScene("Fox_scene");
                     break;
 
                 case "S0_scene":
@@ -54,10 +54,6 @@ public class SceneChanger : MonoBehaviour
                     break;
 
                 case "Bear_scene":
-                    SceneManager.LoadScene("MountainGod_scene");
-                    break;
-
-                case "Animal_Scene":
                     SceneManager.LoadScene("MountainGod_scene");
                     break;
 

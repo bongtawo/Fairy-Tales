@@ -40,7 +40,7 @@ public class MainSceneChanger : MonoBehaviour
         switch (gotoSceneNum)
         {
             case 0:
-                SceneManager.LoadScene("Intro_Scene");
+                SceneManager.LoadScene("Intro_scene");
                 break;
 
             case 1:

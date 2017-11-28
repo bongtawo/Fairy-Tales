@@ -9,10 +9,7 @@ public class EventTrigger : MonoBehaviour
     public Renderer axeRender;
     public PlayableDirector director;
     public GameObject player;
-    public Transform aniStartPos;
-    public PlayerMoveTest VRController;
-    public AudioSource EventBgm;
-    public AudioSource BirdFx;
+    public Vector3 aniStartPos;
 
     private void Start()
     {
@@ -23,12 +20,9 @@ public class EventTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("OnTriggerEnter");
-        player.transform.position = aniStartPos.position;
+        player.transform.position = aniStartPos;
         EventStart();
         gameObject.SetActive(false);
-        VRController.enabled = false;
-        EventBgm.Play();
-        BirdFx.Stop();
     }
 
     private void EventStart()

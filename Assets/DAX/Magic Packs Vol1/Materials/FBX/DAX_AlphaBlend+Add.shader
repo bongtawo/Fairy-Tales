@@ -5,19 +5,21 @@ Shader "Particles/Alpha Blended + Add"
 {
 Properties
 {
-	cTintColorv4 ("Tint Color", Color) = (0.5,0.5,0.5,0.5)
-	tMainTex2D ("Texture", 2D) = "white" {}
-	fSoftFactor ("Soft Factor", Range(0.01,3.0)) = 1.0
+	_TintColor ("Tint Color", Color) = (0.5,0.5,0.5,0.5)
+	_MainTex ("Particle Texture", 2D) = "white" {}
+	_InvFade ("Soft Particles Factor", Range(0.01,3.0)) = 1.0
 }
 
 Category
 {
-	Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }	
+	Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
+	
 	ColorMask RGB
 	Cull Off
 	Lighting Off
 	ZWrite Off
-	Fog { Color (0,0,0,0) }	
+	Fog { Color (0,0,0,0) }
+	
 	SubShader
 	{
 		Pass
@@ -25,19 +27,23 @@ Category
 				Name "ADDITIVE"
 				
 				Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
-				Blend SrcAlpha One				
+				Blend SrcAlpha One
+				
 				ColorMask RGB
 				Cull Off
 				Lighting Off
 				ZWrite Off
-				Fog { Color (0,0,0,0) }				
+				Fog { Color (0,0,0,0) }
+				
 				CGPROGRAM
 				#pragma vertex vert
 				#pragma fragment frag
-				#pragma multi_compile_particles				
-				#include "UnityCG.cginc"				
-				sampler2D tMainTex2D;
-				fixed4 cTintColorv4;
+				#pragma multi_compile_particles
+				
+				#include "UnityCG.cginc"
+				
+				sampler2D _MainTex;
+				fixed4 _TintColor;
 				
 				struct appdata_t {
 					float4 vertex : POSITION;
@@ -54,7 +60,7 @@ Category
 					#endif
 				};
 				
-				float4 tMainTex2D_ST;
+				float4 _MainTex_ST;
 				
 				v2f vert (appdata_t v)
 				{
@@ -65,23 +71,23 @@ Category
 					COMPUTE_EYEDEPTH(o.projPos.z);
 					#endif
 					o.color = v.color;
-					o.texcoord = TRANSFORM_TEX(v.texcoord,tMainTex2D);
+					o.texcoord = TRANSFORM_TEX(v.texcoord,_MainTex);
 					return o;
 				}
 				
 				sampler2D _CameraDepthTexture;
-				float fSoftFactor;
+				float _InvFade;
 				
 				fixed4 frag (v2f i) : COLOR
 				{
 					#ifdef SOFTPARTICLES_ON
 					float sceneZ = LinearEyeDepth (UNITY_SAMPLE_DEPTH(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.projPos))));
 					float partZ = i.projPos.z;
-					float fade = saturate (fSoftFactor * (sceneZ-partZ));
+					float fade = saturate (_InvFade * (sceneZ-partZ));
 					i.color.a *= fade;
 					#endif
 					
-					return 2.0 * i.color * cTintColorv4 * tex2D(tMainTex2D, i.texcoord).a;
+					return 2.0 * i.color * _TintColor * tex2D(_MainTex, i.texcoord).a;
 				}
 				ENDCG 
 			}
@@ -90,20 +96,24 @@ Category
 				Name "ALPHA_BLENDED"
 				
 				Tags { "Queue"="Transparent-5" "IgnoreProjector"="True" "RenderType"="Transparent" }
-				Blend SrcAlpha OneMinusSrcAlpha				
+				Blend SrcAlpha OneMinusSrcAlpha
+				
 				ColorMask RGB
 				Cull Off
 				Lighting Off
 				ZWrite Off
-				Fog { Color (0,0,0,0) }				
+				Fog { Color (0,0,0,0) }
+				
 				CGPROGRAM
 				#pragma vertex vert
 				#pragma fragment frag
-				#pragma multi_compile_particles				
+				#pragma multi_compile_particles
+				
 				#include "UnityCG.cginc"
-				#define TEST				
-				sampler2D tMainTex2D;
-				fixed4 cBaseColorV4;
+				#define TEST
+				
+				sampler2D _MainTex;
+				fixed4 _BaseColor;
 				
 				struct appdata_t {
 					float4 vertex : POSITION;
@@ -120,7 +130,7 @@ Category
 					#endif
 				};
 				
-				float4 tMainTex2D_ST;
+				float4 _MainTex_ST;
 				
 				v2f vert (appdata_t v)
 				{
@@ -131,24 +141,24 @@ Category
 					COMPUTE_EYEDEPTH(o.projPos.z);
 					#endif
 					o.color = v.color;
-					o.texcoord = TRANSFORM_TEX(v.texcoord,tMainTex2D);
+					o.texcoord = TRANSFORM_TEX(v.texcoord,_MainTex);
 					return o;
 				}
 				
 				sampler2D _CameraDepthTexture;
-				float fSoftFactor;
+				float _InvFade;
 				
 				fixed4 frag (v2f i) : COLOR
 				{
 					#ifdef SOFTPARTICLES_ON
 					float sceneZ = LinearEyeDepth (UNITY_SAMPLE_DEPTH(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.projPos))));
 					float partZ = i.projPos.z;
-					float fade = saturate (fSoftFactor * (sceneZ-partZ));
+					float fade = saturate (_InvFade * (sceneZ-partZ));
 					i.color.a *= fade;
 					#endif
 					
-					fixed alpha = tex2D(tMainTex2D, i.texcoord).a * i.color.a * cBaseColorV4.a * 2.0;
-					return fixed4(2.0 * cBaseColorV4.rgb, alpha);
+					fixed alpha = tex2D(_MainTex, i.texcoord).a * i.color.a * _BaseColor.a * 2.0;
+					return fixed4(2.0 * _BaseColor.rgb, alpha);
 				}
 				ENDCG 
 			}

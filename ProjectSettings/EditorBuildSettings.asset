@@ -9,14 +9,20 @@ EditorBuildSettings:
     path: Assets/TestScenes/MainMenu.unity
     guid: 40250d2c5be8642479fd3e1420fee7bb
   - enabled: 1
-    path: Assets/Scenes/Intro_Scene.unity
-    guid: cfb48f656734c99459a63c34048e3231
+    path: Assets/TestScenes/Intro_scene.unity
+    guid: 95f5caebf82264d6b8aee7e4bcaf6e20
   - enabled: 1
-    path: Assets/Scenes/Animal_Scene.unity
-    guid: 44899e94cb772e840a27b4d76694375f
+    path: Assets/TestScenes/Rabbit_scene.unity
+    guid: ea54823ba38bc4c769773f3c2b9d388e
   - enabled: 1
     path: Assets/TestScenes/Action_02.unity
     guid: 6cd95ca0169174954915dba8c79d7d86
   - enabled: 1
-    path: Assets/Scenes/MountainGod_Scene.unity
-    guid: 7473938b7ae531c47a9a914060388b23
+    path: Assets/TestScenes/Fox_scene.unity
+    guid: ba8a8fb71d12045be9c55756e522ee7a
+  - enabled: 1
+    path: Assets/TestScenes/Bear_scene.unity
+    guid: 4620af0ff656641dfa3809559b48ef95
+  - enabled: 1
+    path: Assets/TestScenes/MountainGod_scene.unity
+    guid: 87773e6603efa4bcd88d5d00e70a97e7
