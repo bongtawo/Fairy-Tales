@@ -26,4 +26,4 @@ Material:
     - _InvFade: 3
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _TintColor: {r: 0.12151295, g: 0.5588235, b: 0.04108997, a: 0.42745098}
+    - _TintColor: {r: 0, g: 1, b: 1, a: 0.42745098}
