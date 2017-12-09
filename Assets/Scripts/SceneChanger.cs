@@ -22,43 +22,20 @@ public class SceneChanger : MonoBehaviour
             switch (SceneManager.GetActiveScene().name)
             {
                 case "Intro_Scene":
-                    SceneManager.LoadScene("Animal_Scene");
+                    SceneManager.LoadScene("Animal_Deer_Scene");
                     break;
 
-                case "S0_scene":
-                    SceneManager.LoadScene("S1_scene");
+                case "Animal_Deer_Scene":
+                    SceneManager.LoadScene("Animal_Tiger_Scene");
                     break;
 
-                case "S1_scene":
-                    SceneManager.LoadScene("S2_scene");
+                case "Animal_Tiger_Scene":
+                    SceneManager.LoadScene("MountainGod_Scene");
                     break;
 
-                case "S2_scene":
-                    SceneManager.LoadScene("S3_scene");
-                    break;
-
-                case "S3_scene":
-                    SceneManager.LoadScene("S4_scene");
-                    break;
-
-                case "S4_scene":
-                    SceneManager.LoadScene("S5_scene");
-                    break;
-
-                case "Rabbit_scene":
-                    SceneManager.LoadScene("MountainGod_scene");
-                    break;
-
-                case "Fox_scene":
-                    SceneManager.LoadScene("MountainGod_scene");
-                    break;
-
-                case "Bear_scene":
-                    SceneManager.LoadScene("MountainGod_scene");
-                    break;
-
-                case "Animal_Scene":
-                    SceneManager.LoadScene("MountainGod_scene");
+                case "Ending_Scene":
+                case "Ending2_Scene":
+                    SceneManager.LoadScene("MainMenu");
                     break;
 
                 default:

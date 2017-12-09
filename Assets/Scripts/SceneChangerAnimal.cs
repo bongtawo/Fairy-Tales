@@ -11,7 +11,7 @@ public class SceneChangerAnimal : MonoBehaviour
         {
             case "Dialogue_Test":
                 Debug.Log("Change Scene to Action_02");
-                SceneManager.LoadScene("Action_02", LoadSceneMode.Additive);
+                SceneManager.LoadScene("MissionPlay_Scene", LoadSceneMode.Additive);
                 break;
 
             case "MainMenu":

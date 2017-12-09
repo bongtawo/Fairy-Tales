@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using Valve.VR;
 
 public class PlayerMoveTest : MonoBehaviour
@@ -10,8 +8,8 @@ public class PlayerMoveTest : MonoBehaviour
     private Camera cam;
     private float inputX, inputZ;
     private Vector3 setPosition;
-    private float speed = 0.3f;
-    public GameObject UIExit;
+    private float speed = 0.1f;
+    private Rigidbody rb;
 
     private void Start()
     {
@@ -20,42 +18,28 @@ public class PlayerMoveTest : MonoBehaviour
         //set and start fade to
         SteamVR_Fade.Start(Color.clear, 2f);
         cam = Camera.main;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        inputX = Input.GetAxisRaw("Horizontal");
-        inputZ = Input.GetAxisRaw("Vertical");
-
-        setPosition = cam.transform.forward * inputZ * speed;
-        setPosition += cam.transform.right * inputX * speed;
-        setPosition.y = 0;
-        transform.position += setPosition;
-
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButton("MoveConfirm"))
         {
-            if (UIExit.activeInHierarchy)
-            {
-                Application.Quit();
-                Debug.Log("메뉴키");
-                //Game 종료
-            }
-            else
-            {
-                StartCoroutine("ExitFalse");
-                Debug.Log("한번더 누르면 종료됨");
+            inputX = Input.GetAxisRaw("Horizontal");
+            inputZ = Input.GetAxisRaw("Vertical");
 
-                //한번더 누르면 게임이 종료됩니다
-            }
+            setPosition = cam.transform.forward * inputZ;
+            setPosition += cam.transform.right * inputX;
+            setPosition.y = 0;
+            //transform.position += setPosition;
+            rb.MovePosition(rb.position + setPosition.normalized * speed);
         }
-    }
 
-    private IEnumerator ExitFalse()
-    {
-        UIExit.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        UIExit.SetActive(false);
+        if (Input.GetButton("Cancel"))
+        {
+            Debug.Log("메뉴키");
+        }
     }
 
     private void OnEnable()

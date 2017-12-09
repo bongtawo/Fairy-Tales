@@ -39,7 +39,7 @@ public class CutTreeScript : MonoBehaviour
             powerSlider.value = 0;
         }
 
-        if (Input.GetAxis("Fire1") > 0.1f)
+        if (Input.GetAxis("Fire2") > 0.1f)
         {
             Charge();
         }

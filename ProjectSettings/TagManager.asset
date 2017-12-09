@@ -8,6 +8,7 @@ TagManager:
   - TreeObject
   - MainLight
   - UI_Button
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Animal
   - 
   - 
   - 
